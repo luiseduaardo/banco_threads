@@ -10,28 +10,19 @@ double bankAccountBalance = 0;
 
 // add amount to bankAccountBalance
 void deposit(double amount) {
-   pthread_mutex_lock(&lock);
+   //pthread_mutex_lock( &lock );
    bankAccountBalance += amount;
-   pthread_mutex_unlock(&lock);
+  // pthread_mutex_unlock( &lock );
 }
 
 // subtract amount from bankAccountBalance
 void withdraw(double amount) {
-   pthread_mutex_lock(&lock);
+  // pthread_mutex_lock( &lock );
    bankAccountBalance -= amount;
-   pthread_mutex_unlock(&lock);
+  // pthread_mutex_unlock( &lock );
 }
 
 void cleanup() {
    pthread_mutex_destroy(&lock);
 }
 
-// transferencia
-
-// checar saldo
-
-// fazer isso para pelo menos 5 contas
-
-// conta a ser manipulada por cada thread é definida aleatoriamente, assim como a ação
-
-// mostrar balanço de todas as threads a cada operação para checar saldo
