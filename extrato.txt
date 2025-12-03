@@ -1,0 +1,13 @@
+--- INICIO DA SIMULACAO BANCARIA ---
+Contas Ativas: 5
+------------------------------------
+EXTRATO
+[DEPÓSITO] Conta #0 | +$36.00 | Novo saldo: $0.00
+[ERRO]     Conta #3 | -$78.00 | Saldo insuficiente: $0.00
+------------------------------------
+--- SALDOS FINAIS ---
+[CONSULTA] Conta #0 |    -   | Saldo atual:         $36.00
+[CONSULTA] Conta #1 |    -   | Saldo atual:         $0.00
+[CONSULTA] Conta #2 |    -   | Saldo atual:         $0.00
+[CONSULTA] Conta #3 |    -   | Saldo atual:         $0.00
+[CONSULTA] Conta #4 |    -   | Saldo atual:         $0.00
