@@ -1,0 +1,16 @@
+--- EXTRATO DA CONTA #3 ---
+[ERRO]         Conta #3      | -$78.00 | Saldo insuficiente: $0.00
+[DEPÓSITO]     Conta #3      | +$68.00 | Novo saldo: $0.00
+[CONSULTA]     Conta #3      |    -   | Saldo atual:         $68.00
+[CONSULTA]     Conta #3      |    -   | Saldo atual:         $68.00
+[ERRO]         Conta #3      | -$71.00 | Saldo insuficiente: $68.00
+[RECEBEU]      De Conta #4        | Valor: $35.00 | Novo Saldo: $103.00
+[CONSULTA]     Conta #3      |    -   | Saldo atual:         $103.00
+[ENVIOU]       Para Conta #4      | Valor: $55.00 | Saldo Restante: $48.00
+[ENVIOU]       Para Conta #1      | Valor: $13.00 | Saldo Restante: $35.00
+[ENVIOU]       Para Conta #2      | Valor: $2.00 | Saldo Restante: $33.00
+[FALHA TRANSF] Tentou enviar $71.00 p/ #0 | Saldo Insuficiente
+[ERRO]         Conta #3      | -$46.00 | Saldo insuficiente: $33.00
+[DEPÓSITO]     Conta #3      | +$51.00 | Novo saldo: $33.00
+[CONSULTA]     Conta #3      |    -   | Saldo atual:         $84.00
+[CONSULTA]     Conta #3      |    -   | Saldo atual:         $84.00

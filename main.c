@@ -57,13 +57,6 @@ void *do_random_action(void *x)
 
 int main(int argc, char **argv)
 {
-    logfile = fopen("extrato.txt", "w");
-
-    fprintf(logfile, "--- INICIO DA SIMULACAO BANCARIA ---\n");
-    fprintf(logfile, "Contas Ativas: %d\n", ACCOUNT_COUNT);
-    fprintf(logfile, "------------------------------------\n");
-    fprintf(logfile, "EXTRATO\n");
-
     size_t thread_count = get_thread_count(argc, argv);
     pthread_t *threads = malloc(thread_count * sizeof(pthread_t));
 
@@ -79,14 +72,9 @@ int main(int argc, char **argv)
     for (size_t t = 0; t < thread_count; t++)
         pthread_join(threads[t], NULL);
 
-    printf("\n--- SIMULACAO CONCLUIDA ---\n");
-    fprintf(logfile, "------------------------------------\n");
-    fprintf(logfile, "--- SALDOS FINAIS ---\n");
     for (int i = 0; i < ACCOUNT_COUNT; i++) 
     {
         inquire(&accounts[i]);
         remove_account(&accounts[i]);
     }
-
-    fclose(logfile);
 }
