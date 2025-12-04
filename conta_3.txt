@@ -1,5 +1,0 @@
-================ EXTRATO CONTA #3 ================
-OPERACAO     | VALOR        | SALDO
----------------------------------------------------
-[FALHA SAQUE]| (Tentou 78)  | $0.00 (Insuficiente)
-[CONSULTA]   |              | $0.00

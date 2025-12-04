@@ -16,9 +16,7 @@ size_t get_thread_count(int argc, char **argv)
 {
     if (argc == 3) return atoll(argv[1]);
 
-    if (argc == 1) return 1;
-
-    printf("Argumentos inesperados: use ./main [no. threads]\n");
+    printf("Argumentos inesperados: use ./main [no. threads] [seed]\n");
     exit(1);
 }
 
@@ -57,6 +55,10 @@ void *do_random_action(void *x)
 
 int main(int argc, char **argv)
 {
+    if (argc < 3) {
+        printf("Erro de segmentação: use ./main [no. threads] [seed]\n");
+        return -1;
+    }
     srand(atoll(argv[2]));
 
     size_t thread_count = get_thread_count(argc, argv);

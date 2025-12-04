@@ -83,7 +83,7 @@ void withdraw(struct bank_account *account, double amount)
     if (amount <= account->balance) {
         printf("Retirando $%#.2f da conta #%d.\n", amount, account->id);
         account->balance -= amount;
-        fprintf(account->logfile, "[SAQUE]      | -$%-9.2f | $%.2f\n", amount, account->balance);
+        fprintf(account->logfile, "[SAQUE]      | -$%-9.2f  | $%.2f\n", amount, account->balance);
     } else {
         printf("A conta #%d não tem saldo suficiente para retirar $%#.2f.\n", account->id, amount);
         fprintf(account->logfile, "[FALHA SAQUE]| (Tentou %.0f)  | $%.2f (Insuficiente)\n", amount, account->balance);
