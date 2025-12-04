@@ -1,12 +1,6 @@
---- EXTRATO DA CONTA #4 ---
-[ERRO]         Conta #4      | -$31.00 | Saldo insuficiente: $0.00
-[ERRO]         Conta #4      | -$23.00 | Saldo insuficiente: $0.00
-[DEPÓSITO]     Conta #4      | +$58.00 | Novo saldo: $0.00
-[FALHA TRANSF] Tentou enviar $83.00 p/ #0 | Saldo Insuficiente
-[ENVIOU]       Para Conta #3      | Valor: $35.00 | Saldo Restante: $23.00
-[RECEBEU]      De Conta #3        | Valor: $55.00 | Novo Saldo: $78.00
-[CONSULTA]     Conta #4      |    -   | Saldo atual:         $78.00
-[ENVIOU]       Para Conta #1      | Valor: $68.00 | Saldo Restante: $10.00
-[CONSULTA]     Conta #4      |    -   | Saldo atual:         $10.00
-[CONSULTA]     Conta #4      |    -   | Saldo atual:         $10.00
-[CONSULTA]     Conta #4      |    -   | Saldo atual:         $10.00
+================ EXTRATO CONTA #4 ================
+OPERACAO     | VALOR        | SALDO
+---------------------------------------------------
+[FALHA SAQUE]| (Tentou 31)  | $0.00 (Insuficiente)
+[FALHA SAQUE]| (Tentou 23)  | $0.00 (Insuficiente)
+[CONSULTA]   |              | $0.00

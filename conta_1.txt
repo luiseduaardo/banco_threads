@@ -1,17 +1,8 @@
---- EXTRATO DA CONTA #1 ---
-[CONSULTA]     Conta #1      |    -   | Saldo atual:         $0.00
-[ERRO]         Conta #1      | -$28.00 | Saldo insuficiente: $0.00
-[FALHA TRANSF] Tentou enviar $69.00 p/ #2 | Saldo Insuficiente
-[FALHA TRANSF] Tentou enviar $85.00 p/ #2 | Saldo Insuficiente
-[CONSULTA]     Conta #1      |    -   | Saldo atual:         $0.00
-[DEPÓSITO]     Conta #1      | +$6.00 | Novo saldo: $0.00
-[DEPÓSITO]     Conta #1      | +$47.00 | Novo saldo: $6.00
-[RECEBEU]      De Conta #0        | Valor: $9.00 | Novo Saldo: $62.00
-[RECEBEU]      De Conta #3        | Valor: $13.00 | Novo Saldo: $75.00
-[SAQUE]        Conta #1      | -$40.00 | Novo saldo: $35.00
-[DEPÓSITO]     Conta #1      | +$98.00 | Novo saldo: $35.00
-[DEPÓSITO]     Conta #1      | +$76.00 | Novo saldo: $133.00
-[RECEBEU]      De Conta #4        | Valor: $68.00 | Novo Saldo: $277.00
-[CONSULTA]     Conta #1      |    -   | Saldo atual:         $277.00
-[ENVIOU]       Para Conta #0      | Valor: $22.00 | Saldo Restante: $255.00
-[CONSULTA]     Conta #1      |    -   | Saldo atual:         $255.00
+================ EXTRATO CONTA #1 ================
+OPERACAO     | VALOR        | SALDO
+---------------------------------------------------
+[CONSULTA]   |              | $0.00
+[FALHA SAQUE]| (Tentou 28)  | $0.00 (Insuficiente)
+[FALHA TRANS]| (Tentou 69)  | $0.00 (Insuficiente)
+[FALHA TRANS]| (Tentou 85)  | $0.00 (Insuficiente)
+[CONSULTA]   |              | $0.00
