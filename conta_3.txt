@@ -2,7 +2,4 @@
 OPERACAO     | VALOR        | SALDO
 ---------------------------------------------------
 [FALHA SAQUE]| (Tentou 78)  | $0.00 (Insuficiente)
-[DEPOSITO]   | +$68.00      | $68.00
-[CONSULTA]   |              | $68.00
-[CONSULTA]   |              | $68.00
-[CONSULTA]   |              | $68.00
+[CONSULTA]   |              | $0.00

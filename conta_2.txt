@@ -1,6 +1,4 @@
 ================ EXTRATO CONTA #2 ================
 OPERACAO     | VALOR        | SALDO
 ---------------------------------------------------
-[FALHA TRANS]| (Tentou 68)  | $0.00 (Insuficiente)
-[DEPOSITO]   | +$74.00      | $74.00
-[CONSULTA]   |              | $74.00
+[CONSULTA]   |              | $0.00

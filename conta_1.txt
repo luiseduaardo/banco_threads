@@ -2,7 +2,3 @@
 OPERACAO     | VALOR        | SALDO
 ---------------------------------------------------
 [CONSULTA]   |              | $0.00
-[FALHA SAQUE]| (Tentou 28)  | $0.00 (Insuficiente)
-[FALHA TRANS]| (Tentou 69)  | $0.00 (Insuficiente)
-[FALHA TRANS]| (Tentou 85)  | $0.00 (Insuficiente)
-[CONSULTA]   |              | $0.00

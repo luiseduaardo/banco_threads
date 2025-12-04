@@ -14,7 +14,7 @@
 
 size_t get_thread_count(int argc, char **argv)
 {
-    if (argc == 2) return atoll(argv[1]);
+    if (argc == 3) return atoll(argv[1]);
 
     if (argc == 1) return 1;
 
@@ -57,6 +57,8 @@ void *do_random_action(void *x)
 
 int main(int argc, char **argv)
 {
+    srand(atoll(argv[2]));
+
     size_t thread_count = get_thread_count(argc, argv);
     pthread_t *threads = malloc(thread_count * sizeof(pthread_t));
 

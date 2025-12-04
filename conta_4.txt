@@ -1,6 +1,4 @@
 ================ EXTRATO CONTA #4 ================
 OPERACAO     | VALOR        | SALDO
 ---------------------------------------------------
-[FALHA SAQUE]| (Tentou 31)  | $0.00 (Insuficiente)
-[FALHA SAQUE]| (Tentou 23)  | $0.00 (Insuficiente)
 [CONSULTA]   |              | $0.00

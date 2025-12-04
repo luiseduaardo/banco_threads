@@ -2,7 +2,4 @@
 OPERACAO     | VALOR        | SALDO
 ---------------------------------------------------
 [DEPOSITO]   | +$36.00      | $36.00
-[FALHA TRANS]| (Tentou 64)  | $36.00 (Insuficiente)
-[FALHA SAQUE]| (Tentou 73)  | $36.00 (Insuficiente)
-[DEPOSITO]   | +$27.00      | $63.00
-[CONSULTA]   |              | $63.00
+[CONSULTA]   |              | $36.00
