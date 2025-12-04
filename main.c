@@ -12,17 +12,27 @@
 #include <stdio.h>
 #include <pthread.h>
 
-size_t get_thread_count(int argc, char **argv)
-{
-    if (argc == 3) return atoll(argv[1]);
+size_t thread_count = 1;
+size_t seed = 42;
 
-    printf("Argumentos inesperados: use ./main [no. threads] [seed]\n");
-    exit(1);
+void set_cla_variables(int argc, char **argv)
+{
+    if (argc > 3) {
+        printf("Erro de segmentação: use ./main [no. threads] [seed]\n");
+        exit(1);
+    }
+
+    // Permitindo arg condicional
+    if (argc >= 2)
+    { 
+        thread_count = atoll(argv[1]);
+        if (argc == 3) seed = atoll(argv[2]);
+    }
 }
 
-void *do_random_action(void *x)
+void *do_random_action(void *arg)
 {
-    struct bank_account *accounts = (struct bank_account *) x;
+    struct bank_account *accounts = (struct bank_account *) arg;
 
     size_t i = rand() % ACCOUNT_COUNT;
     struct bank_account *account = &accounts[i];
@@ -55,19 +65,18 @@ void *do_random_action(void *x)
 
 int main(int argc, char **argv)
 {
-    if (argc < 3) {
-        printf("Erro de segmentação: use ./main [no. threads] [seed]\n");
-        return -1;
-    }
-    srand(atoll(argv[2]));
+    set_cla_variables(argc, argv);
 
-    size_t thread_count = get_thread_count(argc, argv);
+    srand(seed);
     pthread_t *threads = malloc(thread_count * sizeof(pthread_t));
 
     struct bank_account accounts[ACCOUNT_COUNT];
     for (int i = 0; i < ACCOUNT_COUNT; i++) accounts[i] = create_account();
 
-    printf("--------EXTRATO--------\n");
+    // printf("--------EXTRATO--------\n");
+    printf("Executando %lu operações aleatórias em %u contas... ", thread_count, ACCOUNT_COUNT);
+    printf("(Seed: %lu)\n", seed);
+
     for (size_t t = 0; t < thread_count; t++)
         pthread_create(&threads[t], NULL, do_random_action, (void *) &accounts);
 
@@ -78,7 +87,9 @@ int main(int argc, char **argv)
 
     for (int i = 0; i < ACCOUNT_COUNT; i++) 
     {
-        inquire(&accounts[i]);
+        // inquire(&accounts[i]);
         remove_account(&accounts[i]);
     }
+
+    printf("Feito! Verifique os arquivos EXTRATO para ver o extrato.\n");
 }

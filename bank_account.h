@@ -15,7 +15,7 @@ struct bank_account
 };
 
 // Armazena a quantidade de contas existentes.
-int global_id = 0;
+int global_id = 1;
 
 // Cria uma conta com ID único e saldo zerado.
 struct bank_account create_account()
@@ -26,13 +26,13 @@ struct bank_account create_account()
     acc.balance = 0;
 
     char filename[64];
-    sprintf(filename, "conta_%d.txt", acc.id);
+    sprintf(filename, "EXTRATO.%d", acc.id);
     acc.logfile = fopen(filename, "w");
 
     
-    fprintf(acc.logfile, "================ EXTRATO CONTA #%d ================\n", acc.id);
-    fprintf(acc.logfile, "%-12s | %-12s | %s\n", "OPERACAO", "VALOR", "SALDO");
-    fprintf(acc.logfile, "---------------------------------------------------\n");
+    fprintf(acc.logfile, "=================== EXTRATO CONTA #%d ===================\n", acc.id);
+    fprintf(acc.logfile, "| OPERAÇÃO | RESULTADO |     VALOR     |     SALDO     |\n");
+    fprintf(acc.logfile, "|----------|-----------|---------------|---------------|\n");
     fflush(acc.logfile);
     fflush(acc.logfile);
 
@@ -52,9 +52,9 @@ void inquire(struct bank_account *account)
 {
     pthread_mutex_lock(&account->lock);
 
-    printf("O saldo da conta #%d é $%#.2f.\n", account->id, account->balance);
+    // printf("O saldo da conta #%d é $%#.2f.\n", account->id, account->balance);
 
-    fprintf(account->logfile, "[CONSULTA]   |              | $%.2f\n", account->balance);
+    fprintf(account->logfile, "| CONSULTA |  SUCESSO  |               | $%-12.2f |\n", account->balance);
     fflush(account->logfile);
 
     pthread_mutex_unlock(&account->lock);
@@ -67,9 +67,9 @@ void deposit(struct bank_account *account, double amount)
 
     account->balance += amount;
     
-    printf("Depositando $%#.2f na conta #%d.\n", amount, account->id);
+    // printf("Depositando $%#.2f na conta #%d.\n", amount, account->id);
 
-    fprintf(account->logfile, "[DEPOSITO]   | +$%-10.2f | $%.2f\n", amount, account->balance);
+    fprintf(account->logfile, "| DEPÓSITO |  SUCESSO  | +$%-11.2f | $%-12.2f |\n", amount, account->balance);
     fflush(account->logfile);
 
     pthread_mutex_unlock(&account->lock);
@@ -81,12 +81,12 @@ void withdraw(struct bank_account *account, double amount)
     pthread_mutex_lock(&account->lock);
 
     if (amount <= account->balance) {
-        printf("Retirando $%#.2f da conta #%d.\n", amount, account->id);
+        // printf("Retirando $%#.2f da conta #%d.\n", amount, account->id);
         account->balance -= amount;
-        fprintf(account->logfile, "[SAQUE]      | -$%-9.2f  | $%.2f\n", amount, account->balance);
+        fprintf(account->logfile, "| SAQUE    |  SUCESSO  | -$%-11.2f | $%-12.2f |\n", amount, account->balance);
     } else {
-        printf("A conta #%d não tem saldo suficiente para retirar $%#.2f.\n", account->id, amount);
-        fprintf(account->logfile, "[FALHA SAQUE]| (Tentou %.0f)  | $%.2f (Insuficiente)\n", amount, account->balance);
+        // printf("A conta #%d não tem saldo suficiente para retirar $%#.2f.\n", account->id, amount);
+        fprintf(account->logfile, "| SAQUE    |   FALHA   | -$%-11.2f | $%-12.2f |\n", amount, account->balance);
     }
     fflush(account->logfile);
 
@@ -107,22 +107,22 @@ void transfer(struct bank_account *transferor, struct bank_account *transferee, 
         transferor->balance -= amount;
         transferee->balance += amount;
 
-        printf("Transferindo $%#.2f da conta #%d para a conta #%d.\n", amount, transferor->id, transferee->id);
+        // printf("Transferindo $%#.2f da conta #%d para a conta #%d.\n", amount, transferor->id, transferee->id);
 
         if (transferor->logfile) {
-            fprintf(transferor->logfile, "[TRANSF ENV] | -$%-9.2f | $%.2f (Para #%d)\n", amount, transferor->balance, transferee->id);
+            fprintf(transferor->logfile, "| TRANSF.E |  SUCESSO  | -$%-11.2f | $%-12.2f | (para #%d)\n", amount, transferor->balance, transferee->id);
             fflush(transferor->logfile);
         }
 
         if (transferee->logfile) {
-            fprintf(transferee->logfile, "[TRANSF REC] | +$%-9.2f | $%.2f (De #%d)\n", amount, transferee->balance, transferor->id);
+            fprintf(transferee->logfile, "| TRANSF.R |  SUCESSO  | +$%-11.2f | $%-12.2f | (de #%d)\n", amount, transferee->balance, transferor->id);
             fflush(transferee->logfile);
         }
 
     } else {
-        printf("Falha ao transferir #%d -> #%d (Saldo insuficiente)\n", transferor->id, transferee->id);
+        // printf("Falha ao transferir #%d -> #%d (Saldo insuficiente)\n", transferor->id, transferee->id);
         if (transferor->logfile) {
-            fprintf(transferor->logfile, "[FALHA TRANS]| (Tentou %.0f)  | $%.2f (Insuficiente)\n", amount, transferor->balance);
+            fprintf(transferor->logfile, "| TRANSF.E |   FALHA   | -$%-11.2f | $%-12.2f |\n", amount, transferor->balance);
             fflush(transferor->logfile);
         }
     }
